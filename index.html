@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New England Growth Studio — AI-Powered Growth for Small Business</title>
+  <meta name="description" content="Find out if your business is ready for AI. Free 10-question assessment gives you a clear score and a specific next step.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:      #0F2340;
+      --navy-deep: #081628;
+      --teal:      #00B896;
+      --teal-dark: #009E82;
+      --teal-light:#E8FBF7;
+      --bg:        #F8FAFC;
+      --white:     #FFFFFF;
+      --text:      #1E293B;
+      --muted:     #64748B;
+      --border:    #E2E8F0;
+      --max-w:     1100px;
+      --radius:    14px;
+      --radius-sm: 9px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta {
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 9px 18px;
+      border-radius: var(--radius-sm);
+      font-weight: 600 !important;
+      transition: background 0.15s !important;
+    }
+    .nav-cta:hover { background: #1a3560 !important; color: var(--white) !important; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      border-top: 1px solid var(--border);
+      padding: 16px 24px 20px;
+      gap: 16px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .mobile-menu .nav-cta {
+      display: inline-block;
+      text-align: center;
+      padding: 12px 20px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 100px 0 96px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      max-width: 760px;
+      margin: 0 auto 20px;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 19px);
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--teal);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background 0.15s, transform 0.15s;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      transition: border-color 0.15s, background 0.15s;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
+    .hero-disclaimer {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 4px;
+    }
+
+    /* ── SECTIONS BASE ── */
+    section { padding: 88px 0; }
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+    }
+    .section-body {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+    .section-body p + p { margin-top: 14px; }
+
+    /* ── RESULTS ── */
+    .results { background: var(--white); }
+    .results-intro {
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+    .results-intro .section-body { margin-top: 16px; }
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .tier-card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .tier-score {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .tier-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .tier-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .tier-0 { background: #FEF8F8; border-color: #FECACA; }
+    .tier-0 .tier-score { color: #DC2626; }
+    .tier-1 { background: #FFFBF5; border-color: #FED7AA; }
+    .tier-1 .tier-score { color: #C2410C; }
+    .tier-2 { background: #F0FDF8; border-color: #A7F3D0; }
+    .tier-2 .tier-score { color: #047857; }
+    .tier-3 { background: var(--teal-light); border-color: #6EE7D4; }
+    .tier-3 .tier-score { color: var(--teal-dark); }
+
+    /* ── HEADWATERS ── */
+    .headwaters { background: var(--navy); }
+    .headwaters .section-eyebrow { color: var(--teal); }
+    .headwaters .section-title { color: var(--white); max-width: 760px; }
+    .headwaters .section-body { color: rgba(255,255,255,0.65); }
+    .headwaters .section-body strong { color: var(--white); font-weight: 700; }
+    .hw-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hw-text { }
+    .hw-callout {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 36px;
+    }
+    .hw-callout-q {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.4;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+    .hw-callout ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .hw-callout ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+    .hw-callout ul li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+    .btn-teal {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--teal);
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 13px 24px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background 0.15s, transform 0.15s;
+      font-family: inherit;
+    }
+    .btn-teal:hover { background: var(--teal-dark); transform: translateY(-1px); }
+
+    /* ── SERVICES ── */
+    .services { background: var(--bg); }
+    .services-intro {
+      max-width: 600px;
+      margin-bottom: 56px;
+    }
+    .services-intro .section-body { margin-top: 16px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-duration {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .service-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+    .service-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .service-fit {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .service-fit-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .service-fit p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--white); }
+    .how-intro { max-width: 580px; margin-bottom: 60px; }
+    .how-intro .section-body { margin-top: 16px; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: calc(12.5% + 12px);
+      right: calc(12.5% + 12px);
+      height: 1px;
+      background: var(--border);
+      z-index: 0;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0 20px 0 0;
+    }
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+    .step h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .step p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--bg); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-sidebar { }
+    .about-name {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .about-title {
+      font-size: 14px;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .about-tags {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .about-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .about-tag::before {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+    }
+    .about-body .section-title { margin-bottom: 24px; }
+    .about-body p {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    .about-body p:last-child { margin-bottom: 0; }
+    .about-body strong { color: var(--text); font-weight: 600; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--navy); text-align: center; }
+    .contact .section-title { color: var(--white); }
+    .contact .section-body { color: rgba(255,255,255,0.65); max-width: 540px; margin: 16px auto 40px; }
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .contact-alt {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+    }
+    .contact-alt a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      transition: color 0.15s;
+    }
+    .contact-alt a:hover { color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-deep);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 36px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .footer-logo span { color: var(--teal); }
+    .footer-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      font-style: italic;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 960px) {
+      .hw-content { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: 1fr; max-width: 540px; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .steps::before { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-sidebar { display: none; }
+      .tier-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      section { padding: 64px 0; }
+      .hero { padding: 72px 0 68px; }
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .steps { grid-template-columns: 1fr; gap: 32px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-links { flex-wrap: wrap; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">New England <span>Growth Studio</span></a>
+      <ul class="nav-links">
+        <li><a href="#results">Your Score</a></li>
+        <li><a href="#headwaters">Headwaters</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="https://aireadinessscore.netlify.app" target="_blank" class="nav-cta">Get My Score →</a></li>
+      </ul>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#results" onclick="toggleMenu()">Your Score</a>
+    <a href="#headwaters" onclick="toggleMenu()">Headwaters</a>
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="https://aireadinessscore.netlify.app" target="_blank" class="nav-cta">Get My Score →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <span class="hero-eyebrow">Everyone carries a backpack.</span>
+    <h1>Find out if your business is ready for AI.</h1>
+    <p class="hero-sub">10 questions. 5 minutes. A clear score — and a specific next step. Free, no account required.</p>
+    <div class="hero-cta-wrap">
+      <a href="https://aireadinessscore.netlify.app" target="_blank" class="btn-primary">Get My Score →</a>
+      <p class="hero-disclaimer">No sales call. No pitch. Just a straight answer about where you stand.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results" id="results">
+  <div class="container">
+    <div class="results-intro">
+      <h2 class="section-title">Your score tells us exactly what you need.</h2>
+      <div class="section-body">
+        <p>Most AI conversations start in the wrong place. Someone tries to sell you a tool before anyone has looked at your business. We do it differently.</p>
+        <p>The AI Readiness Score looks at your systems, your data, your team, and your marketing. It gives you a number out of 100. That number tells us — and you — where the real gaps are and what to do first.</p>
+        <p>Here's what happens based on where you land:</p>
+      </div>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card tier-0">
+        <div class="tier-score">0–25</div>
+        <h3>Not quite ready.</h3>
+        <p>Your foundation needs work before AI can help. That's the honest starting point, not a bad one. We'll point you to the right place to begin and give you a free resource to get moving.</p>
+      </div>
+      <div class="tier-card tier-1">
+        <div class="tier-score">26–50</div>
+        <h3>Almost there.</h3>
+        <p>You've built real infrastructure. A few specific gaps are holding you back. A short conversation will show you exactly what's in the way and how quickly we can clear it.</p>
+      </div>
+      <div class="tier-card tier-2">
+        <div class="tier-score">51–75</div>
+        <h3>You're ready.</h3>
+        <p>Your systems and team are in solid shape. You're leaving revenue on the table by not acting now. Book a free consultation and we'll map out exactly where AI creates the most leverage in your business.</p>
+      </div>
+      <div class="tier-card tier-3">
+        <div class="tier-score">76–100</div>
+        <h3>You're a priority.</h3>
+        <p>You have the systems, the data, and the team to move fast. Businesses like yours see the biggest returns from AI — and we want to work with you. Book your call now. You'll be talking to Matthew directly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HEADWATERS -->
+<section class="headwaters" id="headwaters">
+  <div class="container">
+    <div class="hw-content">
+      <div class="hw-text">
+        <p class="section-eyebrow">For Tourism &amp; Hospitality Businesses</p>
+        <h2 class="section-title">You've been spending money on marketing. Do you know which of it is actually filling your calendar?</h2>
+        <div class="section-body">
+          <p>Most tourism and hospitality operators can tell you what they spent on marketing last season. Very few can tell you which of that spending drove their bookings.</p>
+          <p>That's not a small problem. It means every budget decision next season is a guess. It means you're probably funding channels that aren't working and underinvesting in the ones that are.</p>
+          <p><strong>Headwaters</strong> is a proprietary marketing mix modeling tool built specifically for tourism and hospitality businesses. It connects your marketing spend to your actual booking revenue — channel by channel, season by season. Not a dashboard full of vanity metrics. Not another report to ignore.</p>
+          <p>A clear answer to one question: <strong>what's actually working?</strong></p>
+        </div>
+        <div style="margin-top: 32px;">
+          <a href="https://headwaters.streamlit.app" target="_blank" class="btn-teal">See Headwaters in Action →</a>
+        </div>
+      </div>
+      <div class="hw-callout">
+        <p class="hw-callout-q">If you run any of these businesses, Headwaters was built for you.</p>
+        <ul>
+          <li>Resort or hotel</li>
+          <li>Boat rental or marina</li>
+          <li>Campground or RV park</li>
+          <li>Boutique inn or B&amp;B</li>
+          <li>Guided tour or outdoor experience</li>
+          <li>Any tourism or hospitality operation</li>
+        </ul>
+        <a href="https://headwaters.streamlit.app" target="_blank" class="btn-teal">See Headwaters in Action →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-intro">
+      <h2 class="section-title">Three ways to work together.</h2>
+      <div class="section-body">
+        <p>Every engagement starts with your AI Readiness Score. From there, we match the work to what your business actually needs — not a package we're trying to move.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-duration">2 weeks</div>
+        <h3>AI + Growth Readiness Sprint</h3>
+        <p>You need to know where you stand before you spend anything. This engagement gives you a full audit of your systems, data, marketing, and team — and a 90-day roadmap that tells you what to do, in what order, and why.</p>
+        <p style="margin-top: 12px;">You walk away with a plan you can actually execute. No 40-page deck. No fluff. Just the next 90 days, clearly laid out.</p>
+        <div class="service-fit">
+          <div class="service-fit-label">Right for you if</div>
+          <p>You're serious about AI but don't know where to start. You want a second set of eyes from someone who has built this before.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-duration">4–6 weeks</div>
+        <h3>Funnel &amp; Follow-Up Automation Build</h3>
+        <p>Most businesses don't lose leads because of bad marketing. They lose them because of what happens after the lead comes in. Slow follow-up. No system. Fragmented data. This engagement fixes that.</p>
+        <p style="margin-top: 12px;">We build your lead capture, CRM integration, and follow-up automation from the ground up. New leads get a response in minutes, not days. Your data lives in one place. Your team stops doing work that a system should be doing.</p>
+        <div class="service-fit">
+          <div class="service-fit-label">Right for you if</div>
+          <p>You're getting leads but losing them. You know your follow-up is broken. You're ready to build the infrastructure that turns interest into revenue.</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-duration">Monthly, ongoing</div>
+        <h3>Fractional Growth Architect</h3>
+        <p>You don't need a full-time CMO. You need a senior growth partner who knows your business, shows up consistently, and keeps the strategy moving. That's this.</p>
+        <p style="margin-top: 12px;">Every month: strategy sessions, performance reviews, new initiatives designed and handed off to your team. I stay close to your numbers and your goals. When something isn't working, I tell you directly. When something is, we double down.</p>
+        <div class="service-fit">
+          <div class="service-fit-label">Right for you if</div>
+          <p>You've got momentum and need someone in your corner who sees the full picture. A strategic partner — not another vendor.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="how-intro">
+      <h2 class="section-title">The process is simple. The results are real.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Diagnose</h3>
+        <p>Start with your AI Readiness Score. Ten questions that surface exactly where you stand across systems, data, team, and marketing. Your score is the starting point — and it makes sure we never build on a cracked foundation.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Design</h3>
+        <p>Before anything gets built, we agree on the plan. What problem are we solving? In what order? What does success look like in 90 days? You see the roadmap before we take a single step.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Build</h3>
+        <p>We build what the plan calls for — automations, integrations, analytics, workflows. You're involved where your judgment is needed. Everything else, we handle.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Prove</h3>
+        <p>Every engagement ends with a clear before-and-after. What changed. What it's worth. Where to go next. You should always be able to point to what the work did for your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-sidebar">
+        <div class="about-name">Matthew Alighieri</div>
+        <div class="about-title">Founder, New England Growth Studio</div>
+        <div class="about-tags">
+          <div class="about-tag">Lakes Region, New Hampshire</div>
+          <div class="about-tag">Pandora — first 300 employees</div>
+          <div class="about-tag">Apple</div>
+          <div class="about-tag">iHeartMedia</div>
+          <div class="about-tag">16+ years in growth &amp; digital media</div>
+        </div>
+      </div>
+      <div class="about-body">
+        <h2 class="section-title">I've been in the room.</h2>
+        <p>My name is Matthew Alighieri. I'm a growth strategist and AI operator based in the Lakes Region of New Hampshire.</p>
+        <p>Before I built New England Growth Studio, I spent sixteen years at the front lines of digital media and marketing. I was one of the first 300 people at Pandora — I watched a startup become the largest music streaming platform in the country. I worked at Apple. I built revenue at iHeartMedia. I've been in rooms where the stakes were real and the margin for soft answers was zero.</p>
+        <p>I'm not an engineer. I don't sell software. What I do is look at a business — its systems, its data, how it captures leads, how it follows up, what it measures — and tell you exactly where AI creates leverage and where it doesn't.</p>
+        <p>I built this practice for small and mid-size businesses because that's where I saw the biggest gap. The tools the largest media companies in the world use to drive revenue are now available to a boutique inn, a home services company, a guided kayak operation. Most business owners just don't know how to get there. That's the job.</p>
+        <p>I work directly with every client. No account managers. No handoffs. When you work with New England Growth Studio, you get me — someone who has been at the highest levels of this industry and chose to bring it back to the businesses that actually build communities.</p>
+        <p>Let's talk about what AI can actually do for your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 class="section-title">Let's talk.</h2>
+    <p class="section-body">If you've taken the AI Readiness Score and you're ready to talk about what comes next — reach out. If you haven't taken it yet, that's where to start.</p>
+    <p class="section-body" style="margin: 0 auto 40px;">The first conversation is free and it won't feel like a sales call. I'll ask real questions about your business and give you real answers about what I think you should do. No pitch deck. No pressure. Just a straight conversation.</p>
+    <div class="contact-actions">
+      <a href="https://aireadinessscore.netlify.app" target="_blank" class="btn-primary">Book a Free Conversation →</a>
+      <p class="contact-alt">Or reach out directly: <a href="mailto:matt@matthewalighieri.com">matt@matthewalighieri.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#" class="footer-logo">New England <span>Growth Studio</span></a>
+      <p class="footer-tagline">I am not selling tools. I am building leverage.</p>
+      <ul class="footer-links">
+        <li><a href="https://aireadinessscore.netlify.app" target="_blank">AI Readiness Score</a></li>
+        <li><a href="https://headwaters.streamlit.app" target="_blank">Headwaters</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  // Close mobile menu on outside click
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    const toggle = document.querySelector('.nav-toggle');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>
