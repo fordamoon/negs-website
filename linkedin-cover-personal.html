@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Cover — Matthew Alighieri</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #12141A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .cover {
+    width: 1584px;
+    height: 396px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* Lighthouse background */
+  .cover .bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Pigeon_Point_Light_Station_2006.jpg/1280px-Pigeon_Point_Light_Station_2006.jpg') center/cover no-repeat;
+  }
+
+  /* Dark gradient overlay — opaque left, fading right */
+  .cover .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(7, 13, 25, 0.95) 0%,
+      rgba(7, 13, 25, 0.92) 25%,
+      rgba(7, 13, 25, 0.78) 45%,
+      rgba(7, 13, 25, 0.45) 65%,
+      rgba(7, 13, 25, 0.15) 85%,
+      rgba(7, 13, 25, 0.0) 100%
+    );
+  }
+
+  /* Neon green vertical accent bar */
+  .cover .accent-bar {
+    position: absolute;
+    left: 80px;
+    top: 48px;
+    bottom: 48px;
+    width: 3px;
+    background: #39FF14;
+    border-radius: 2px;
+    box-shadow: 0 0 14px rgba(57, 255, 20, 0.4), 0 0 4px rgba(57, 255, 20, 0.6);
+    z-index: 2;
+  }
+
+  /* Text content */
+  .cover .content {
+    position: absolute;
+    left: 108px;
+    top: 52px;
+    bottom: 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .name {
+    font-size: 30px;
+    font-weight: 800;
+    color: #FFFFFF;
+    letter-spacing: -0.3px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .title-line {
+    font-size: 14px;
+    font-weight: 600;
+    color: #39FF14;
+    letter-spacing: 0.3px;
+    margin-bottom: 20px;
+  }
+
+  .neon-divider {
+    width: 64px;
+    height: 2px;
+    background: #39FF14;
+    border-radius: 1px;
+    margin-bottom: 22px;
+    box-shadow: 0 0 8px rgba(57, 255, 20, 0.35);
+  }
+
+  .motto {
+    font-size: 26px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.35;
+    letter-spacing: -0.2px;
+    margin-bottom: 4px;
+  }
+
+  .motto:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .pedigree {
+    margin-top: 20px;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="bg"></div>
+  <div class="overlay"></div>
+  <div class="accent-bar"></div>
+  <div class="content">
+    <div class="name">Matthew Alighieri</div>
+    <div class="title-line">Founder, New England Growth Studio</div>
+    <div class="neon-divider"></div>
+    <div class="motto">Systems over chaos.</div>
+    <div class="motto">Execution over noise.</div>
+    <div class="pedigree">Former Pandora &middot; Apple &middot; iHeartMedia</div>
+  </div>
+</div>
+
+</body>
+</html>
