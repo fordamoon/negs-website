@@ -47,7 +47,7 @@
 Fill in every field. Facebook uses these for search ranking.
 
 **Short Description (155 characters):**
-> AI-powered growth consulting for tourism & hospitality businesses across New England. Stop guessing. Start growing.
+> AI-powered growth consulting for tourism & hospitality businesses across New England. Stop guessing. Start adapting. Keep growing.
 
 **Long Description:**
 > New England Growth Studio helps tourism operators, hospitality businesses, marinas, boat rentals, and boutique inns across New Hampshire, Maine, Vermont, and Massachusetts grow with data — not guesswork.
